@@ -22,7 +22,7 @@ class WebSocketRoom extends Component {
   };
 
   sendMessage = () => {
-    this.clientRef.sendMessage('/app/user-all', JSON.stringify({
+    this.clientRef.sendMessage('/app/room/123', JSON.stringify({
       name: this.state.name,
       message: this.state.typedMessage
     }));
@@ -85,7 +85,7 @@ class WebSocketRoom extends Component {
             {this.displayMessages()}
           </div>
           <SockJsClient url={wsSourceUrl}
-                        topics={['/topic/user']}
+                        topics={['/topic/user/123']}
                         onConnect={() => {
                           console.log("connected");
                         }}
