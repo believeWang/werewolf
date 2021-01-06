@@ -9,6 +9,7 @@ import {
 import SettingForm from "../component/SettingForm";
 import WebSocketRoom from "../component/WebSocketRoom";
 import Home from "./Home";
+import React from "react";
 
 export default function ModalSwitch() {
 

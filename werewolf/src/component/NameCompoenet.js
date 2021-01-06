@@ -7,62 +7,55 @@ import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 
-class NameComponent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: true,
-      name: null
-    }
-  }
 
-  handleClickOpen = () => {
-    this.setState({open: true});
+const NameComponent = ({ className, setName,...rest }) => {
+  const [open, setOpen] = React.useState(true);
+  const [tempName, setTempName] = React.useState(null);
+
+  let handleClickOpen = () => {
+    setOpen(true);
   };
 
-  handleClose = () => {
-    this.setState({open: false});
+  let handleClose = () => {
+    setOpen(false);
   };
 
-  save = () => {
-    this.setState({open: false});
-    this.props.setName(this.state.name);
+  let save = () => {
+    setOpen(false);
+    setName(tempName);
   };
 
-  setEnteredName = (event) => {
-    this.setState({name: event.target.value});
+  let setEnteredName = (event) => {
+    setTempName( event.target.value);
   };
-
-  render() {
-    return (
-        <div>
-          <Dialog open={this.state.open} aria-labelledby="form-dialog-title">
-            <DialogTitle id="form-dialog-title">Chat</DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-                Please enter your name
-              </DialogContentText>
-              <TextField
-                  autoFocus
-                  margin="dense"
-                  id="name"
-                  label="Name"
-                  type="name" onChange={this.setEnteredName}
-                  fullWidth
-              />
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={this.save} color="primary">
-                Save
-              </Button>
-              <Button onClick={this.handleClose} color="primary">
-                Cancel
-              </Button>
-            </DialogActions>
-          </Dialog>
-        </div>
-    )
-  }
+  return (
+      <div>
+        <Dialog open={open} aria-labelledby="form-dialog-title">
+          <DialogTitle id="form-dialog-title">Chat</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Please enter your name
+            </DialogContentText>
+            <TextField
+                autoFocus
+                margin="dense"
+                id="name"
+                label="Name"
+                type="name" onChange={setEnteredName}
+                fullWidth
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={save} color="primary">
+              Save
+            </Button>
+            <Button onClick={handleClose} color="primary">
+              Cancel
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+  )
 }
 
 export default NameComponent;
