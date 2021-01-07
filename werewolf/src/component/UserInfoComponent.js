@@ -8,9 +8,10 @@ import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 
 
-const NameComponent = ({ className, setName,...rest }) => {
+const UserInfoComponent = ({ className, setName, setRoomCode,...rest }) => {
   const [open, setOpen] = React.useState(true);
   const [tempName, setTempName] = React.useState(null);
+  const [room, setRoom] = React.useState(null);
 
   let handleClickOpen = () => {
     setOpen(true);
@@ -23,10 +24,14 @@ const NameComponent = ({ className, setName,...rest }) => {
   let save = () => {
     setOpen(false);
     setName(tempName);
+    setRoomCode(room);
   };
 
   let setEnteredName = (event) => {
     setTempName( event.target.value);
+  };
+  let setEnteredRoom = (event) => {
+    setRoom( event.target.value);
   };
   return (
       <div>
@@ -38,10 +43,19 @@ const NameComponent = ({ className, setName,...rest }) => {
             </DialogContentText>
             <TextField
                 autoFocus
+                autoComplete='off'
                 margin="dense"
                 id="name"
                 label="Name"
                 type="name" onChange={setEnteredName}
+                fullWidth
+            />
+            <TextField
+                autoComplete='off'
+                margin="dense"
+                id="room"
+                label="Room"
+                onChange={setEnteredRoom}
                 fullWidth
             />
           </DialogContent>
@@ -58,4 +72,4 @@ const NameComponent = ({ className, setName,...rest }) => {
   )
 }
 
-export default NameComponent;
+export default UserInfoComponent;

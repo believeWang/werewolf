@@ -7,7 +7,7 @@ import {
   useParams
 } from "react-router-dom";
 import SettingForm from "../component/SettingForm";
-import WebSocketRoom from "../component/WebSocketRoom";
+import GameRoom from "../component/GameRoom";
 import Home from "./Home";
 import React from "react";
 
@@ -18,7 +18,7 @@ export default function ModalSwitch() {
         <Switch >
           <Route exact path="/" children={<Home />} />
           <Route path="/about" children={<SettingForm />} />
-          <Route path="/about2" children={<WebSocketRoom />} />
+          <Route path="/about2" children={<GameRoom />} />
         </Switch>
 
       </div>
